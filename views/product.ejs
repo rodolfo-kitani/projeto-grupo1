@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Produto</title>
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <a href="/product">Cadastrar Produto</a>
+    </header>
+    <main>
+        <h1>Cadastro de Produto</h1>
+        <div>
+            <h3>Formulário de cadastro</h3>
+            <form action="" method="post">
+                <div>
+                    <label for="productName" class="">Nome do produto</label>
+                    <input name="productName" id="productName" type="text">
+                </div>
+                <div>
+                    <label for="price" class="">Preço</label>
+                    <input name="price" id="price" type="number">
+                </div>
+                <div class="">
+                    <div>
+                      <label class="form-label">Tipo de produto:</label>
+                    </div>
+                        <div class="">          
+                    <% types.forEach(function(type) {%>
+                            <input type="radio" name="type" id="<%= type.id %>" class="" value="<%= type.id %>" />
+                            <label for="<%= type.id %>" class=""> <%= type.label %> </label>
+                    <%}) %>
+                        </div>
+                </div>
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Resetar</button>
+
+            </form>
+        </div>
+    </main>
+</body>
+</html>
