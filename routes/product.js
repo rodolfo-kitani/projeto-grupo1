@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     const newProduct = req.body;
     
-    //res.render('product-create', { title: 'Cadastrar Produto' });
     res.redirect("/product");
   });
 
