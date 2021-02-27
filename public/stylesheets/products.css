@@ -1,5 +1,6 @@
-/* Inicio do Menu */ 
-.menu ul li a {
+ /* Inicio do Menu */ 
+ 
+ .menu ul li a {
     color: #000000;
     text-decoration: none;
     font-size: 90%;
@@ -11,51 +12,39 @@
 .menu ul li {
     background-color: #F9E79F;
     position: relative;
-    float: left;
-    display: block;
-    width: 33%;
-    height: 40px;
+    float: left; 
+    width: 200px;
+    height: 50px;
+    display: inline-block;
     text-align: center;
-    line-height: 40px;
+    line-height: 60px;
     /* position: porque o primeiro menu precisa ser 'relativo' em contexto do submenu | float: o texto está sendo forçado para a esquerda | display: para tirar as bolinahs que ficam automaticamente nas listas | width. height: são a largura e alyua do menu principal | text-align e line-height: são para cstumizar o menu de forma centralizada */ 
 }
 
-.menu ul li:hover {
-    background-color: #4D4D49;
-    /* o hover neste caso está apenas acrescentando uma cor quando passamos o mouse em cima do menu */
+.menu ul li ul {
+    display: none;
+    padding: 0;
+    height: 40px;
 }
 
-.menu ul li ul li a:hover {
-    color: red;
+.menu ul li ul li:hover {
+    background-color: brown;
 }
 
 .menu ul li:hover > ul {
     display: block;
-    /* o hover. neste caso, está basicamentw falado: "quando tocar em um menu que tenha submenu, abra o submenu" */
 }
 
-.menu ul {
-    padding: 0;
-    /* tirando o padding da primeira lista para que as coisas fiquem devidamente alinhas quando abrimos a lista qu contém o submenu */
-}
+/* Fim do menu */
 
-.menu ul ul {
-    display: none;
-    /* oculta o submenu da tela */
-}
-
-.menu ul ul li {
-    margin-left: 35%;
-    /* faz com que o submenu fique alinhado no centro do menu. esse parametro foi no famoso: olhometro. */
-}
-
-/* Fim do Menu */ 
-
-.container {
+.the-container {
     /* width: 100vw;
     height: 100vh; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    }
+    justify-content: left;
+    /* align-items: left; */
+    background-color: #F9E79F;
+    padding-right: 20px;
+    padding-left: 20px;
+    } 
