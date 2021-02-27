@@ -1,10 +1,9 @@
 var express = require('express');
-const session = require('express-session');
 var router = express.Router();
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send('respond with a resource');
 });
 
 module.exports = router;

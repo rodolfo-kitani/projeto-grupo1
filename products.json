@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Smart TV",
+    "type": "TV"
+  },
+  {
+    "id": 2,
+    "name": "TV LCD",
+    "type": "TV"
+  },
+  {
+    "id": 3,
+    "name": "TV 4K",
+    "type": "TV"
+  },
+  {
+    "id": 4,
+    "name": "IPhone",
+    "type": "mobile"
+  },
+  {
+    "id": 5,
+    "name": "Samsung A10",
+    "type": "mobile"
+  }
+]

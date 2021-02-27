@@ -1,10 +1,13 @@
 var express = require('express');
-const session = require('express-session');
+const model = require('../model/products')
+
 var router = express.Router();
+
+// http://localhost:3000/products
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('products', { title: 'produtos', products: model.getProducts() });
 });
 
 module.exports = router;
