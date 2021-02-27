@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var products = require('../models/product')
 
 //Lista dos tipos de produtos
 const types = [{
@@ -17,12 +18,13 @@ const types = [{
 //Get product-create page
 
 router.get('/', function(req, res, next) {
-    res.render('product', { title: 'Cadastrar Produto', types: types,});
+    res.render('product', { title: 'Cadastrar Produto', types: types, products: products.getProducts(),});
   });
 
 router.post('/', function(req, res, next) {
     const newProduct = req.body;
-    
+    console.log(newProduct);
+    products.insertProduct(newProduct);
     res.redirect("/product");
   });
 
