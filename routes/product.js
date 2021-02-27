@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     const newProduct = req.body;
-    console.log(newProduct);
     products.insertProduct(newProduct);
     res.redirect("/product");
   });

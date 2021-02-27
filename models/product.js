@@ -29,7 +29,7 @@ const fs = require('fs');
 function getProducts() {
     //return fs.readFileSync('../products.json', { encoding: 'utf8', });
     let file = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    console.log('arquivo aberto: ' + file)
+    console.log('arquivo aberto:' + '\n'+ file)
     return file;
     //return products;
 }
@@ -39,12 +39,12 @@ function getProducts() {
 function insertProduct(product) {
     //products.push(product);
     let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    console.log('antes: ' + tempProducts);
+    console.log('antes: ' + '\n' + tempProducts);
     tempProducts = JSON.parse(tempProducts);
     tempProducts.push(product);
     tempProducts = JSON.stringify(tempProducts);
     fs.writeFileSync('./models/products.json', tempProducts);
-    console.log('depois: ' + tempProducts)
+    console.log('depois: ' + '\n' + tempProducts)
 }
 
 module.exports = {
