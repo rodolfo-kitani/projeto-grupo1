@@ -14,7 +14,16 @@ const types = [{
   label: "Celular",
 }];
 
-
+//Function de validação
+/*
+function validation (postData) {
+  for (const item of array) {
+    if (item === "") {
+      const err = array.item;
+      return break;
+    }
+  }
+*/
 //Get product-create page
 
 router.get('/', function(req, res, next) {
@@ -23,6 +32,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     const newProduct = req.body;
+    //validade user populated data
+    //validation(newProduct);
+    console.log(newProduct);
+
     products.insertProduct(newProduct);
     res.redirect("/product");
   });
