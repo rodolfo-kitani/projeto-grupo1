@@ -17,8 +17,8 @@
             <h3>Formulário de cadastro</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 <div>
-                    <label for="productName" class="">Nome do produto</label>
-                    <input name="productName" id="productName" type="text">
+                    <label for="name" class="">Nome do produto</label>
+                    <input name="name" id="name" type="text">
                 </div>
                 <div>
                     <label for="price" class="">Preço</label>
@@ -37,7 +37,7 @@
                 </div>
                 <div>
                     <p>Foto do produto:</p>
-                    <input type="file" name="fotoProduto" id="fotoProduto">
+                    <input type="file" name="photo" id="">
                 </div>
                 <button type="submit">Cadastrar</button>
                 <button type="reset">Resetar</button>
@@ -50,7 +50,11 @@
             <div>
                 
                     <div>
-                        <%= products %>
+                        <% const productsList = JSON.parse(products); %>
+                        <% productsList.forEach(function(item) {%>
+                            <p> <%= item.name %> </p>
+                            <img <%= "src=images/uploads/" + item.photo %> >
+                        <%}) %>
                     </div>
                 
             </div>

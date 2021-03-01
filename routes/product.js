@@ -7,10 +7,10 @@ const path = require('path');
 //Multer recebra o upload de img
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join('/public/images/uploads'))
+    cb(null, path.join('public','images','uploads'))
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
+    cb(null, /*file.fieldname + '-' + Date.now()*/ file.originalname)
   }
 })
  
@@ -46,9 +46,13 @@ router.get('/', function(req, res, next) {
   });
 
 router.post('/', upload.any(), function(req, res, next) {
-    const newProduct = req.body;
+    //const newProduct = req.body;
+    let {name, price, type} = req.body;
+    let {files} = req;
     //validade user populated data
     //validation(newProduct);
+    
+    let newProduct = {name, price, type, photo:files[0].originalname}
     console.log(newProduct);
 
     products.insertProduct(newProduct);

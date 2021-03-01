@@ -39,12 +39,12 @@ function getProducts() {
 function insertProduct(product) {
     //products.push(product);
     let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    console.log('antes: ' + '\n' + tempProducts);
+    //console.log('antes: ' + '\n' + tempProducts);
     tempProducts = JSON.parse(tempProducts);
     tempProducts.push(product);
     tempProducts = JSON.stringify(tempProducts);
     fs.writeFileSync('./models/products.json', tempProducts);
-    console.log('depois: ' + '\n' + tempProducts)
+    //console.log('depois: ' + '\n' + tempProducts)
 }
 
 module.exports = {
