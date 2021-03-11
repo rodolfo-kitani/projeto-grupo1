@@ -4,27 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/product.css"> <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
     <title>Cadastrar Novo Produto</title>
 </head>
 <body>
     <header>
-        <a href="/">Home</a>
-        <a href="/product">Cadastrar Produto</a>
+        <div class="the-container">
+            <a href="/"class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Fate_Zero_logo.png" height="100px" width="100px" alt="Logo Falso"></a> <!--o logo em forma de imagem está dentro do link-->
+        <div class="the-menu">
+            <nav class="menu">
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/about">Sobre</a></li>
+                <li><a href="/products">Você está aqui</a> 
+                <ul>
+                    <li><a href="/login">Login In</a></li>
+                    <li><a href="/register">Cadastro</a></li>
+                </ul>
+                </li></ul>
+            </nav>
+        </div>
     </header>
-    <main>
+    <main class="register-container ">
+    <div class="container">
+        <div class="item col-6">
         <h1>Cadastro de Produto</h1>
-        <div>
+
+        
             <h3>Formulário de cadastro</h3>
             <form action="" method="post" enctype="multipart/form-data">
-                <div>
+                <div class="mb-3">
                     <label for="name" class="">Nome do produto</label>
-                    <input name="name" id="name" type="text">
+                    <input name="name" id="name" type="text" class="form-control">
                 </div>
                 <div>
                     <label for="price" class="">Preço</label>
-                    <input name="price" id="price" type="number">
+                    <input name="price" id="price" type="number" class="form-control">
                 </div>
-                <div class="">
+                <div class="mb-3">
                     <div>
                       <label class="form-label">Tipo de produto:</label>
                     </div>
@@ -35,27 +53,30 @@
                     <%}) %>
                         </div>
                 </div>
-                <div>
-                    <p>Foto do produto:</p>
-                    <input type="file" name="photo" id="">
+                <div class="mb-3">
+                    <label for="photo">Foto do produto: </label>
+                    <input type="file" class="btn" name="photo" id="photo" >
                 </div>
-                <button type="submit">Cadastrar</button>
-                <button type="reset">Resetar</button>
-
+                <div>
+                <button type="submit" class="btn btn-warning">Cadastrar</button>
+                <button type="reset" class="btn btn-warning">Resetar</button>
+                </div>
             </form>
         </div>
+    </div>
+        <div class="container">
+            <div class="container-product">
+            <div class="col-12"><h3>Lista de Produtos</h3></div>
+            
+                    <% const productsList = JSON.parse(products); %>
+                    <% productsList.forEach(function(item) {%>
+                        <div class="col-lg-4 item-product">    
+                        <p> <%= item.name %> </p>
+                        <img <%= "src=images/uploads/" + item.photo %> >
+                        </div>
+                    <%}) %>
 
-        <div>
-            <h3>Lista de Produtos</h3>
-            <div>
-                
-                    <div>
-                        <% const productsList = JSON.parse(products); %>
-                        <% productsList.forEach(function(item) {%>
-                            <p> <%= item.name %> </p>
-                            <img <%= "src=images/uploads/" + item.photo %> >
-                        <%}) %>
-                    </div>
+
                 
             </div>
         </div>
