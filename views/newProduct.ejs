@@ -28,23 +28,23 @@
     </header>
     <main class="register-container ">
     <div class="container">
-        <div class="item col-6">
+        <div class="item col-6 mt-4">
         <h1>Cadastro de Produto</h1>
 
         
             <h3>Formulário de cadastro</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="name" class="">Nome do produto</label>
-                    <input name="name" id="name" type="text" class="form-control">
+                    <label for="productName" class="">Nome do produto*</label>
+                    <input name="productName" id="productName" type="text" class="form-control">
                 </div>
                 <div>
-                    <label for="price" class="">Preço</label>
+                    <label for="price" class="">Preço*</label>
                     <input name="price" id="price" type="number" class="form-control">
                 </div>
                 <div class="mb-3">
                     <div>
-                      <label class="form-label">Tipo de produto:</label>
+                      <label class="form-label">Tipo de produto:*</label>
                     </div>
                         <div class="">          
                     <% types.forEach(function(type) {%>
@@ -61,17 +61,20 @@
                 <button type="submit" class="btn btn-warning">Cadastrar</button>
                 <button type="reset" class="btn btn-warning">Resetar</button>
                 </div>
+                <div class="mt-3">
+                    <p>*Campo obrigatório</p>
+                </div>
             </form>
         </div>
     </div>
         <div class="container">
             <div class="container-product">
-            <div class="col-12"><h3>Lista de Produtos</h3></div>
+            <div class="col-12 mt-4"><h3>Lista de Produtos</h3></div>
             
                     <% const productsList = JSON.parse(products); %>
                     <% productsList.forEach(function(item) {%>
-                        <div class="col-lg-4 item-product">    
-                        <p> <%= item.name %> </p>
+                        <div class="col-lg-4 item-product mt-4">    
+                        <p> <%= item.productName %> </p>
                         <img <%= "src=images/uploads/" + item.photo %> >
                         </div>
                     <%}) %>

@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 
 //adicionando rotas
 
-var productRouter = require('./routes/product');
+var newProductRouter = require('./routes/newProduct');
 
 
 var app = express();
@@ -28,7 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //App da página de cadastrar produto
-app.use('/product', productRouter);
+app.use('/novo-produto', newProductRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
