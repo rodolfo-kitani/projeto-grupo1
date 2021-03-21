@@ -45,13 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-//App da página de cadastrar produto
-app.use('/novo-produto', newProductRouter);
 app.use('/products', productsRouter);
 app.use('/about', aboutRouter);
 app.use('/login', loginRouter);  // pelo o amor de deus, presta atenção no código, o ' ' é só no primeiro parametro //
 app.use('/register', registerRouter);
+app.use('/novo-produto', newProductRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

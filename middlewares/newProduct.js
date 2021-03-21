@@ -14,6 +14,16 @@ function validateInput (req, res, next) {
 
 }
 
+function validateUser (req, res, next) {
+    const user = req.session.user;
+    if (user) {
+        return next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 module.exports = {
-    validateInput: validateInput
+    validateInput: validateInput,
+    validateUser: validateUser
 }

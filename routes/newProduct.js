@@ -22,10 +22,11 @@ var products = require('../models/newProduct')
 //Get product-create page
 
 router.get('/', 
-  newProductControllers.get
+    newProductMiddleware.validateUser, 
+    newProductControllers.get
 );
 
 
-router.post('/', upload.any(), newProductMiddleware.validateInput, newProductControllers.post);
+router.post('/', upload.any(),  newProductMiddleware.validateUser, newProductMiddleware.validateInput,newProductControllers.post);
 
 module.exports = router;
