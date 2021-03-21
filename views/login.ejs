@@ -7,20 +7,20 @@
     <div class="the-container">
         <div class="image"><a href="/"class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Fate_Zero_logo.png" height="100px" width="100px" alt="Logo Falso"></a></div> <!--o logo em forma de imagem está dentro do link-->
         <main class="container">
-            <form>
+            <form action="" method="POST"> <!-- Adicionado action="" e method="POST"-->
                 <div class="row2">
                     <div class="box card">
                         <div class="mb-3">
                             <h1 class="title">Faça login e aproveite os produtos cadastrados disponíveis</h1>
                             <div class="card-body">
                                 <label for="email" class="form-label"><strong>E-mail</strong></label>
-                                <input type="email" class="form-control" id="email">
+                                <input type="email" class="form-control" id="email" name="email"> <!-- Adicionei o name="email" para capturar esse dado no req.body -->
                             </div>
                         </div>
                         <div class="mb-3">
                             <div class="card-body">
                                 <label for="password" class="form-label"><strong>Senha</strong></label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password" name="password"> <!-- Adicionei o name="password" para capturar esse dado no req.body -->
                             </div>
                             <div class="buttom">
                                 <button type="submit" class="btn btn-primary">Entrar</button>

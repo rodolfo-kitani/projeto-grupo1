@@ -3,15 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
-var loginRouter =require('./routes/login');
+var loginRouter = require('./routes/login');
 var aboutRouter = require('./routes/about');
 var registerRouter = require('./routes/register');
 
 var app = express();
+
+app.use(
+  session({
+    secret: 'myApp-digitalhouse', // Trocar para uma UUID depois,
+    resave: true,    // Opção que diz para o servidor, que a sessão deve ser renovada a cada acesso;       
+    saveUninitialized: true, // Força uma sessão que não está inicializada para que seja salva na store;
+  })
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
