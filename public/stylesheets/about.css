@@ -1,0 +1,50 @@
+ /* Inicio do Menu */ 
+ 
+ .menu ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 90%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background:rgb(0, 0, 0); */ 
+    /* color (da fonte) porque o texto está no link, não nas listas | text-decoration: para tirar o underline da tag <a>, que é um link | font-size e font-family: para customizar o texto qu está dentro da tag */ 
+} 
+
+.menu ul li {
+    background-color: #F9E79F;
+    position: relative;
+    float: left; 
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 60px;
+    /* position: porque o primeiro menu precisa ser 'relativo' em contexto do submenu | float: o texto está sendo forçado para a esquerda | display: para tirar as bolinahs que ficam automaticamente nas listas | width. height: são a largura e alyua do menu principal | text-align e line-height: são para cstumizar o menu de forma centralizada */ 
+}
+
+.menu ul li ul {
+    display: none;
+    padding: 0;
+    height: 40px;
+}
+
+.menu ul li ul li:hover {
+    background-color: brown;
+}
+
+.menu ul li:hover > ul {
+    display: block;
+}
+
+/* Fim do menu */
+
+.the-container {
+    /* width: 100vw;
+    height: 100vh; */
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    /* align-items: left; */
+    background-color: #F9E79F;
+    padding-right: 20px;
+    padding-left: 20px;
+    } 

@@ -5,15 +5,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var app = express();
 
 //adicionando rotas
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var productsRouter = require('./routes/products');
+var loginRouter = require('./routes/login');
+var aboutRouter = require('./routes/about');
+var registerRouter = require('./routes/register');
 var newProductRouter = require('./routes/newProduct');
 
-
-var app = express();
+app.use(
+  session({
+    secret: 'myApp-digitalhouse', // Trocar para uma UUID depois,
+    resave: true,    // Opção que diz para o servidor, que a sessão deve ser renovada a cada acesso;       
+    saveUninitialized: true, // Força uma sessão que não está inicializada para que seja salva na store;
+  })
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +48,10 @@ app.use('/users', usersRouter);
 
 //App da página de cadastrar produto
 app.use('/novo-produto', newProductRouter);
+app.use('/products', productsRouter);
+app.use('/about', aboutRouter);
+app.use('/login', loginRouter);  // pelo o amor de deus, presta atenção no código, o ' ' é só no primeiro parametro //
+app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
