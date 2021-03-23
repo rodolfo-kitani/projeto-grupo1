@@ -25,13 +25,11 @@ function post(req, res, next) {
 
   if (files[0] !== undefined) {
     newProduct = {productName, price, type, photo: files[0].originalname};
-
   } else {
     newProduct = {productName, price, type, photo: 'sem-foto.jpg'};
   }
   products.insertProduct(newProduct);
   res.redirect("/novo-produto");
-
 }
 
 module.exports = {
