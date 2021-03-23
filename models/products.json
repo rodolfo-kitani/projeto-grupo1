@@ -1,5 +1,1 @@
-[
-    {"id":"01","productName":"Notebook i5 17pol","type":"notebook","price":"50.00","photo":"id01.jpg"},
-    {"id":"02","productName":"Desktop i5, Monitor 24pol, 8gb","type":"desktop","price":"75.00","photo":"id02.jpg"},
-    {"id":"03","productName":"Macbook Pro i7 19pol + SSD ","type":"notebook","price":"95.00","photo":"id03.jpg"}
-]
+[{"id":"01","productName":"Notebook i5 17pol","type":"notebook","price":"50.00","photo":"id01.jpg"},{"id":"02","productName":"Desktop i5, Monitor 24pol, 8gb","type":"desktop","price":"75.00","photo":"id02.jpg"},{"id":"03","productName":"Macbook Pro i7 19pol + SSD ","type":"notebook","price":"95.00","photo":"id03.jpg"},{"productName":"Celular Motorola v1","price":"500","type":"cellphone","photo":"sem-foto.jpg"},{"productName":"Celular Motorola 2","price":"1000","type":"cellphone","photo":"moto-e5-4_reduzida.jpg"}]

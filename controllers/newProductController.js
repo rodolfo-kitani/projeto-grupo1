@@ -22,15 +22,15 @@ function post(req, res, next) {
   let {productName, price, type} = req.body;
   let {files} = req;
   if (files[0] !== undefined) {
-    return newProduct = {productName, price, type, photo: files[0].originalname}
+    newProduct = {productName, price, type, photo: files[0].originalname}
 
   } else {
     newProduct = {productName, price, type, photo: 'sem-foto.jpg'}
   }
   console.log(newProduct);
 
-    products.insertProduct(newProduct);
-    res.redirect("/novo-produto");
+  products.insertProduct(newProduct);
+  res.redirect("/novo-produto");
 }
 
 module.exports = {

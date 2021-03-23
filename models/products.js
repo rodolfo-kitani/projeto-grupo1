@@ -1,19 +1,12 @@
-const productsData = require("./products.json");
+const fs = require('fs');
 
-//productsData is not defined
-
+//Função para leitura dos produtos cadastrados
 function getProducts() {
-  return productsData
+    let file = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
+    file = JSON.parse(file);
+    return file;
 }
 
 module.exports = {
-  getProducts: getProducts // colocamos em um objeto por termos um leque de posisbilidades maior quando formos importar o arquivo em outra pasta/arquivo
+  getProducts: getProducts
 }
-
-//1. criar a pasta model
-//2. criar um arquivo dentro da pasta model chamado products.js
-//3. copiar o código do professor
-
-// pasta model -> M
-// pasta views -> V
-// pasta routes -> C (controller)
