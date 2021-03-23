@@ -1,6 +1,7 @@
 const products = require('../models/newProduct')
 const newProductMiddleware = require('../middlewares/newProduct');
 
+
 //Lista dos tipos de produtos
 const types = [{
     id: "notebook",
@@ -21,14 +22,12 @@ function post(req, res, next) {
   let newProduct;
   let {productName, price, type} = req.body;
   let {files} = req;
+
   if (files[0] !== undefined) {
-    newProduct = {productName, price, type, photo: files[0].originalname}
-
+    newProduct = {productName, price, type, photo: files[0].originalname};
   } else {
-    newProduct = {productName, price, type, photo: 'sem-foto.jpg'}
+    newProduct = {productName, price, type, photo: 'sem-foto.jpg'};
   }
-  console.log(newProduct);
-
   products.insertProduct(newProduct);
   res.redirect("/novo-produto");
 }
