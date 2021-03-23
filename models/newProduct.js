@@ -38,7 +38,7 @@ function insertProduct(product) {
     let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
     tempProducts = JSON.parse(tempProducts);
     tempProducts.push(product);
-    tempProducts = JSON.stringify(tempProducts);
+    tempProducts = JSON.stringify(tempProducts, null, '\t');
     fs.writeFileSync('./models/products.json', tempProducts);
 }
 
