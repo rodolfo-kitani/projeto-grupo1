@@ -1,4 +1,4 @@
-const productsData = require("../products.json");
+const productsData = require("./products.json");
 
 //productsData is not defined
 
