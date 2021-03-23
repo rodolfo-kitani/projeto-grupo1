@@ -6,7 +6,7 @@ function validateInput (req, res, next) {
     } else if (newProduct.price === "" ){
         res.status(400).send("Preço é um campo obrigatório");
         return;
-    } else if (newProduct.type === "" ){
+    } else if (newProduct.type === undefined ){
         res.status(400).send("Preço é um campo obrigatório");
         return;
     }
