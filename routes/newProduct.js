@@ -1,9 +1,10 @@
 var express = require('express');
 const multer = require('multer');
-var router = express.Router();
 const path = require('path');
+var router = express.Router();
 const newProductMiddleware = require('../middlewares/newProduct');
 const newProductControllers = require('../controllers/newProductController')
+var products = require('../models/newProduct')
 
 //Multer recebe o upload de img
 var storage = multer.diskStorage({
@@ -16,7 +17,6 @@ var storage = multer.diskStorage({
 })
  
 var upload = multer({ storage: storage })
-var products = require('../models/newProduct')
 
 
 //Get product-create page
@@ -28,7 +28,7 @@ router.get('/',
 
 
 router.post('/',
-  upload.any(),
+  upload.single("photo"),
   newProductMiddleware.validateUser,
   newProductMiddleware.validateInput,
   newProductControllers.post

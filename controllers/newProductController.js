@@ -21,10 +21,14 @@ function get(req, res, next) {
 function post(req, res, next) {
   let newProduct;
   let {productName, price, type} = req.body;
-  let {files} = req;
+  let {file} = req;
+  console.log("________")
+  console.log(file[0])
 
-  if (files[0] !== undefined) {
-    newProduct = {productName, price, type, photo: files[0].originalname};
+
+
+  if (file !== undefined) {
+    newProduct = {productName, price, type, photo: file.originalname};
   } else {
     newProduct = {productName, price, type, photo: 'sem-foto.jpg'};
   }
