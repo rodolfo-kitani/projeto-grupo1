@@ -27,6 +27,11 @@ router.get('/',
 );
 
 
-router.post('/', upload.any(),  newProductMiddleware.validateUser, newProductMiddleware.validateInput,newProductControllers.post);
+router.post('/',
+  upload.any(),
+  newProductMiddleware.validateUser,
+  newProductMiddleware.validateInput,
+  newProductControllers.post
+);
 
 module.exports = router;
