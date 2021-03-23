@@ -22,11 +22,6 @@ function post(req, res, next) {
   let newProduct;
   let {productName, price, type} = req.body;
   let {file} = req;
-  console.log("________")
-  console.log(file[0])
-
-
-
   if (file !== undefined) {
     newProduct = {productName, price, type, photo: file.originalname};
   } else {
