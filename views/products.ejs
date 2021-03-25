@@ -1,50 +1,42 @@
 <!DOCTYPE html>
-<html> 
-  <head>
+<html>
+
+<head>
     <title>produtos</title>
-    <link rel="stylesheet" href="/stylesheets/products.css"> <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
-  </head>
-  <body>
-    <div class="the-container">
-        <a href="/"class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Fate_Zero_logo.png" height="100px" width="100px" alt="Logo Falso"></a> <!--o logo em forma de imagem está dentro do link-->
-    
-    <!-- </div> -->
-        <div class="the-menu">
-            <nav class="menu">
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="/about">Sobre</a></li>
-                <li><a href="/products">Você está aqui</a> 
-                <ul>
-                    <li><a href="/login">Login In</a></li>
-                    <li><a href="/register">Cadastro</a></li>
-                </ul>
-                </li></ul>
-            </nav>
-        </div>
-    </div>
+    <link rel="stylesheet" href="/stylesheets/products.css">
+    <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
+</head>
 
-    <div>
-        <h1>Produtos</h1>
-        <div class="container">
-            <div class="container-product">
-            <div class="col-12 mt-4"><h3>Lista de Produtos</h3></div>
-            
+<body>
+    <%- include('./partials/header') %>
+        <div>
+            <h1>Produtos</h1>
+            <div class="container">
+                <div class="container-product">
+                    <div class="col-12 mt-4">
+                        <h3>Lista de Produtos</h3>
+                    </div>
+
                     <% products.forEach(function(item) {%>
-                        <div class="col-lg-4 item-product mt-4">    
-                        <p> <%= item.productName %> </p>
-                        <img <%= "src=images/uploads/" + item.photo %> >
-                        <p> <%= item.price %> </p>
+                        <div class="col-lg-4 item-product mt-4">
+                            <p>
+                                <%= item.productName %>
+                            </p>
+                            <img <%="src=images/uploads/" + item.photo %> >
+                            <p>
+                                <%= item.price %>
+                            </p>
                         </div>
-                    <%}) %>
+                        <%}) %>
 
+                </div>
             </div>
+
         </div>
 
-    </div>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
+
 </html>
