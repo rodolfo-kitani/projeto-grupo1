@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
         return;
     }
     req.session.user = user;
-    res.redirect('/novo-produto');
+    res.redirect('/products/create');
 })
 
 module.exports = router;
