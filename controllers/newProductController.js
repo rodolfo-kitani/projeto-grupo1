@@ -1,4 +1,4 @@
-const products = require('../models/newProduct')
+const products = require('../models/products')
 const newProductMiddleware = require('../middlewares/newProduct');
 
 
@@ -28,7 +28,7 @@ function post(req, res, next) {
     newProduct = {productName, price, type, photo: 'sem-foto.jpg'};
   }
   products.insertProduct(newProduct);
-  res.redirect("/novo-produto");
+  res.redirect("/products/create");
 }
 
 module.exports = {
