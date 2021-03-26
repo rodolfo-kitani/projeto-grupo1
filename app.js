@@ -5,17 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
-var app = express();
+const app = express();
 
 //adicionando rotas
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
-var loginRouter = require('./routes/login');
-var aboutRouter = require('./routes/about');
-var registerRouter = require('./routes/register');
-var newProductRouter = require('./routes/newProduct');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const loginRouter = require('./routes/login');
+const aboutRouter = require('./routes/about');
+const registerRouter = require('./routes/register');
+// var newProductRouter = require('./routes/newProduct');
 
 app.use(
   session({
@@ -49,7 +49,7 @@ app.use('/products', productsRouter);
 app.use('/about', aboutRouter);
 app.use('/login', loginRouter);  // pelo o amor de deus, presta atenção no código, o ' ' é só no primeiro parametro //
 app.use('/register', registerRouter);
-app.use('/novo-produto', newProductRouter);
+// app.use('/novo-produto', newProductRouter); Esse endereço ficará junto com a rota de produtos.
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
