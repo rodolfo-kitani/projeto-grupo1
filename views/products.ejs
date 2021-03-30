@@ -10,26 +10,29 @@
 
 <body>
     <%- include('./partials/header') %>
-    
+
         <h1>Produtos</h1>
         <div class="container">
             <div class="container-product">
-            <div class="col-12 mt-4"><h3>Lista de Produtos</h3></div>
-            
-                    <% products.forEach(function(item) {%>
-                        <div class="col-lg-4 item-product mt-4">
-                            <p>
-                                <%= item.productName %>
-                            </p>
-                            <img <%="src=images/uploads/" + item.photo %> >
-                            <p>
-                                <%= item.price %>
-                            </p>
-                        </div>
-                        <%}) %>
-
+                <div class="col-12 mt-4">
+                    <h3>Lista de Produtos</h3>
                 </div>
+
+                <% products.forEach(function(item) {%>
+                    <div class="col-lg-4 item-product mt-4">
+                        <p>
+                            <%= item.productName %>
+                        </p>
+                        <img <%="src=images/uploads/" + item.photo %> >
+                        <p>
+                            <%= item.price %>
+                        </p>
+
+                    </div>
+                    <%}) %>
+
             </div>
+        </div>
 
         </div>
 
