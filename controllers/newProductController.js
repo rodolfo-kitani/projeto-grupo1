@@ -14,11 +14,11 @@ const types = [{
     label: "Celular",
 }];
 
-function get(req, res, next) {
-    res.render('newProduct', { title: 'Cadastrar Produto', types: types, products: products.getProducts(), });
+async function get(req, res, next) {
+    res.render('newProduct', { types: types, products: await products.getProducts(), });
 }
 
-function post(req, res, next) {
+async function post(req, res, next) {
     let newProduct;
     let { productName, price, type } = req.body;
     let { file } = req;
@@ -27,7 +27,7 @@ function post(req, res, next) {
     } else {
         newProduct = { productName, price, type, photo: 'sem-foto.jpg' };
     }
-    products.insertProduct(newProduct);
+    await products.insertProduct(newProduct);
     res.redirect("/products/create");
 }
 

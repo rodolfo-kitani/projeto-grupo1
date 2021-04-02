@@ -29,8 +29,8 @@ let productsEdit = getProducts();
 // http://localhost:3000/products
 
 /* GET Listagem de Produto */
-router.get('/', function(req, res, next) {
-    res.render('products', { title: 'produtos', products: products.getProducts() });
+router.get('/', async function(req, res, next) {
+    res.render('products', { title: 'produtos', products: await products.getProducts() });
 });
 
 

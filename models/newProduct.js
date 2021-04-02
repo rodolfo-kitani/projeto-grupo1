@@ -1,23 +1,31 @@
-const fs = require('fs');
+// const fs = require('fs');
+// const Sequelize = require('sequelize');
+// const config = require("../config/database");
 
-//Função para leitura dos produtos cadastrados
-function getProducts() {
-    //return fs.readFileSync('../models/products.json', { encoding: 'utf8', });
-    let file = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    return file;
-}
+// const db = new Sequelize(config);
 
-//Função para inserir novos produtos
-//Obs, os produtos podem ficar em um products.json na models tbm, podem ser importados e exportados para lá, de forma a manter os arquivos enquanto não temos database
-function insertProduct(product) {
-    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    tempProducts = JSON.parse(tempProducts);
-    tempProducts.push(product);
-    tempProducts = JSON.stringify(tempProducts, null, '\t');
-    fs.writeFileSync('./models/products.json', tempProducts);
-}
+// //Função para leitura dos produtos cadastrados
+// async function getProducts() {
+//     const file = await db.query("SELECT * FROM product", { type: Sequelize.QueryTypes.SELECT })
+//     return file;
+// }
 
-module.exports = {
-   getProducts: getProducts,
-   insertProduct: insertProduct,
-};
+// //Função para inserir novos produtos
+// //Obs, os produtos podem ficar em um products.json na models tbm, podem ser importados e exportados para lá, de forma a manter os arquivos enquanto não temos database
+
+// async function insertProduct(product) {
+//     await db.query("INSERT INTO product (name, type, price, photo) VALUES (:name, :type, :price, :photo)", {
+//         replacements: {
+//             name: product.name,
+//             type: product.type,
+//             price: product.price,
+//             photo: product.photo
+//         }
+//     })
+//     console.log("Produto Inserido")
+// }
+
+// module.exports = {
+//    getProducts: getProducts,
+//    insertProduct: insertProduct,
+// };
