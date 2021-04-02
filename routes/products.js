@@ -31,6 +31,7 @@ let productsEdit = getProducts();
 /* GET Listagem de Produto */
 router.get('/', async function(req, res, next) {
     res.render('products', { title: 'produtos', products: await products.getProducts() });
+    console.log(await products)
 });
 
 

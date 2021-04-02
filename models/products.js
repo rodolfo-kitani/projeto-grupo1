@@ -14,6 +14,7 @@ const db = new Sequelize(config);
 
 async function getProducts() {
     const file = await db.query("SELECT * FROM product", { type: Sequelize.QueryTypes.SELECT })
+    console.log(file)
     return file;
 }
 
