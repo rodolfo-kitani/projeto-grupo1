@@ -1,0 +1,3 @@
+o arquivo database.js não foi incluido no github por motio de segurança
+
+para testes peça o arquivo para um dos nossos membros.
