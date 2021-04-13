@@ -7,7 +7,7 @@ let objeto = [{
     price: '50.00',
     adress: 'São Paulo - SP',
     picture: '',
-},{
+}, {
     id: '00002',
     name: 'Desktop i5, Monitor 24pol, 8gb',
     type: 'desktop',
@@ -15,7 +15,7 @@ let objeto = [{
     adress: 'Cotia - SP',
     picture: '',
 
-},{
+}, {
     id: '00003',
     name: 'Macbook Pro i7 19pol + SSD ',
     type: 'notebook',
@@ -26,11 +26,11 @@ let objeto = [{
 
 let nome = "products.json";
 
-function convert2json (objeto, nome) {
+function convert2json(objeto, nome) {
     let convertido = JSON.stringify(objeto);
     return fs.writeFileSync(nome, convertido);
 }
 
-convert2json (objeto, nome);
+convert2json(objeto, nome);
 
 console.log('Conversão realizada');
