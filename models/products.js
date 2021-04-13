@@ -26,6 +26,7 @@ function deleteProduct(productId) {
     tempProducts = JSON.parse(tempProducts);
 
     //Faz um filtro utilizando o productId que foi enviado como parametro da função
+    //E seleciona todos os produtos menos o com id informado
     tempProducts = tempProducts.filter(function(product) {
         return product.id !== parseInt(productId);
         //salva o array filtrado na variavel tempProduct
@@ -38,8 +39,30 @@ function deleteProduct(productId) {
     fs.writeFileSync('./models/products.json', tempProducts);
 }
 
+function findProduct(productId) {
+    
+    //Abre o arquivo JSON com os produtos cadastrados
+    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
+
+    //Transforma o arquivo JSON em um array com objetos em JS
+    tempProducts = JSON.parse(tempProducts);
+
+    //Faz um filtro utilizando o productId que foi enviado como parametro da função
+    //E seleciona APENAS o produto com id informado
+    tempProducts = tempProducts.filter(function(product) {
+        return product.id === parseInt(productId);
+        //salva o array filtrado na variavel tempProduct
+    })
+    
+    return tempProducts;
+}
+
+function updateProduct()
+
 module.exports = {
    getProducts: getProducts,
    insertProduct: insertProduct,
    deleteProduct: deleteProduct,
+   findProduct: findProduct,
+
 };

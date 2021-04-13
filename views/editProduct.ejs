@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/product.css">
     <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
-    <title>Cadastrar Novo Produto</title>
+    <title>Editar Produto</title>
 </head>
 
 <body>
@@ -39,14 +39,18 @@
 
 
                 <h3>Formulário de cadastro</h3>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form method="POST" action="/products/create?_method=PUT" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="id" class="">ID</label>
+                        <input name="id" id="id" type="number" class="form-control" value="<%- tempProduct.id %>" readonly>
+                    </div>
                     <div class="mb-3">
                         <label for="productName" class="">Nome do produto*</label>
-                        <input name="productName" id="productName" type="text" class="form-control">
+                        <input name="productName" id="productName" type="text" value="<%- tempProduct.productName %>" class="form-control" required>
                     </div>
                     <div>
                         <label for="price" class="">Preço*</label>
-                        <input name="price" id="price" type="number" class="form-control">
+                        <input name="price" id="price" type="number" value="<%- tempProduct.price %>" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <div>
@@ -54,7 +58,16 @@
                         </div>
                         <div class="">
                             <% types.forEach(function(type) {%>
-                                <input type="radio" name="type" id="<%= type.id %>" class="" value="<%= type.id %>" />
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    id="<%= type.id %>"
+                                    class=""
+                                    value="<%= type.id %>"
+                                     <% if( type.id === tempProduct.type ) { %>
+                                        <%- "checked" %>
+                                    <% } %>
+                                />
                                 <label for="<%= type.id %>" class=""> <%= type.label %> </label>
                                 <%}) %>
                         </div>
@@ -71,32 +84,6 @@
                         <p>*Campo obrigatório</p>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div class="container">
-            <div class="container-product">
-                <div class="col-12 mt-4">
-                    <h3>Lista de Produtos</h3>
-                </div>
-
-                <% products.forEach(function(item) {%>
-                    <div class="col-lg-4 item-product">
-                        <p>
-                            <%= item.productName %>
-                        </p>
-                        <img <%="src=../images/uploads/" + item.photo %> >
-                        <div class="container-product mt-3">
-                        <form action="/products/create/delete?_method=DELETE" method="POST" >
-                            <input type="text" hidden name="id" value="<%= item.id %>" />
-                            <button type="submit" class="btn btn-danger" >Excluir</button>
-                        </form>
-                        <a href="/products/create/edit/<%- item.id %>" class="btn btn-warning ms-2">Editar</a>
-                        </div>
-                    </div>
-
-                    <%}) %>
-
-
             </div>
         </div>
     </main>

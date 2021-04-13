@@ -48,6 +48,8 @@ router.post('/create',
     newProductControllers.post
 );
 
+//*******Rota para deletar um produto
+
 //Inicialmente seria utilizada a rota /create/:id, mas devido ao Middleware de validação do formulário foi utilizada a /create/delete 
 /*
 router.get('/create/delete/:id', function (req, res) {
@@ -62,6 +64,25 @@ router.delete('/create/delete/', function(req, res) {
     let productId = req.body.id;
     products.deleteProduct(productId);
     res.redirect("/products/create");
+});
+
+//Rota para editar um produto
+router.get('/create/edit/:id', function(req,res) {
+    let types = newProductControllers.types;
+    let productId = req.params.id
+    let tempProduct = products.findProduct(productId);
+    //console.log("temp product > ", tempProduct);
+    //console.log("type > ", types);
+    res.render('editproduct', { tempProduct: tempProduct[0], types: types })
+});
+
+
+//Rota com PUT para edição do produto
+router.put("/create", function(req, res) {
+    res.send("PUT");
+
+    //Essa rota precisa ser implementada.
+    //Mas já esta declarada pois em breve será feita a conexão com o MYSQL
 });
 
 module.exports = router;
