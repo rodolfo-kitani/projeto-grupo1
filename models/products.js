@@ -57,12 +57,9 @@ function findProduct(productId) {
     return tempProducts;
 }
 
-function updateProduct()
-
 module.exports = {
    getProducts: getProducts,
    insertProduct: insertProduct,
    deleteProduct: deleteProduct,
    findProduct: findProduct,
-
 };
