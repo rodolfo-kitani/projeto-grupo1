@@ -40,12 +40,5 @@
 		"price": "1234",
 		"type": "cellphone",
 		"photo": "moto-e5-4_reduzida.jpg"
-	},
-	{
-		"id": 7,
-		"productName": "iphone 12",
-		"price": "5000",
-		"type": "cellphone",
-		"photo": "Design-sem-nome.png"
 	}
 ]

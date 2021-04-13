@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-let productsEdit = getProducts();
+//let productsEdit = getProducts(); //verificar esse código
 
 // http://localhost:3000/products
 
@@ -48,12 +48,21 @@ router.post('/create',
     newProductControllers.post
 );
 
-router.delete('/create/:id', function(req, res) {
+//Inicialmente seria utilizada a rota /create/:id, mas devido ao Middleware de validação do formulário foi utilizada a /create/delete 
+/*
+router.get('/create/delete/:id', function (req, res) {
+    
+    console.log("aqui 1", req.params.id);
+    
+    //res.send("vendo o produto: ", req.params.id);
+})
+*/
 
-
-    products = products.filter(function(product) {
-        return product.id !== parseInt(req.params.id);
-    })
-    res.render('products', { products: products })
+router.delete('/create/delete/', function(req, res) {
+    let productId = req.body.id;
+    console.log("routes, productId", productId.id);
+    products.deleteProduct(productId);
+    res.redirect("/products/create");
 });
+
 module.exports = router;

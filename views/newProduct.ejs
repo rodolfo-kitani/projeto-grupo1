@@ -86,8 +86,9 @@
                         </p>
                         <img <%="src=../images/uploads/" + item.photo %> >
 
-                        <form action="<%= products.id %>?_method=DELETE" method="POST">
-                            <input type="submit" value="Excluir" class="btn btn-danger" />
+                        <form action="/products/create/delete?_method=DELETE" method="POST" >
+                            <input type="text" hidden name="id" value="<%= item.id %>" />
+                            <button type="submit" class="btn btn-danger" >Excluir</button>
                         </form>
                     </div>
                     <%}) %>
