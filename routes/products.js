@@ -60,7 +60,6 @@ router.get('/create/delete/:id', function (req, res) {
 
 router.delete('/create/delete/', function(req, res) {
     let productId = req.body.id;
-    console.log("routes, productId", productId.id);
     products.deleteProduct(productId);
     res.redirect("/products/create");
 });

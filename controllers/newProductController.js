@@ -24,7 +24,6 @@ function post(req, res, next) {
     let { file } = req;
     let id = Math.random() * 1000;
     id = Math.round(id);
-    console.log(id);
     if (file !== undefined) {
         newProduct = { id, productName, price, type, photo: file.originalname };
     } else {
