@@ -39,14 +39,14 @@
 
 
                 <h3>Formulário de cadastro</h3>
-                <form method="POST" action="/products/create?_method=PUT" enctype="multipart/form-data">
+                <form method="POST" action="/products/create/edit?_method=PUT" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="id" class="">ID</label>
                         <input name="id" id="id" type="number" class="form-control" value="<%- tempProduct.id %>" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="productName" class="">Nome do produto*</label>
-                        <input name="productName" id="productName" type="text" value="<%- tempProduct.productName %>" class="form-control" required>
+                        <input name="productName" id="productName" type="text" value="<%- tempProduct.productName %>" class="form-control" readonly required>
                     </div>
                     <div>
                         <label for="price" class="">Preço*</label>
@@ -58,18 +58,12 @@
                         </div>
                         <div class="">
                             <% types.forEach(function(type) {%>
-                                <input
-                                    type="radio"
-                                    name="type"
-                                    id="<%= type.id %>"
-                                    class=""
-                                    value="<%= type.id %>"
-                                     <% if( type.id === tempProduct.type ) { %>
-                                        <%- "checked" %>
+                                <input type="radio" name="type" id="<%= type.id %>" class="" value="<%= type.id %>" <% if( type.id ===  tempProduct.type ) { %>
+                                <%- "checked" %>
                                     <% } %>
-                                />
-                                <label for="<%= type.id %>" class=""> <%= type.label %> </label>
-                                <%}) %>
+                                        />
+                                        <label for="<%= type.id %>" class=""> <%= type.label %> </label>
+                                        <%}) %>
                         </div>
                     </div>
                     <div class="mb-3">

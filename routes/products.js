@@ -1,5 +1,5 @@
 const express = require('express');
-const products = require('../models/products')
+const productsModel = require('../models/products')
 const multer = require('multer');
 const path = require('path');
 
@@ -62,15 +62,15 @@ router.get('/create/delete/:id', function (req, res) {
 
 router.delete('/create/delete/', function(req, res) {
     let productId = req.body.id;
-    products.deleteProduct(productId);
+    productsModel.deleteProduct(productId);
     res.redirect("/products/create");
 });
 
 //Rota para editar um produto
-router.get('/create/edit/:id', function(req,res) {
+router.get('/create/edit/:id', function(req, res) {
     let types = newProductControllers.types;
     let productId = req.params.id
-    let tempProduct = products.findProduct(productId);
+    let tempProduct = productsModel.findProduct(productId);
     //console.log("temp product > ", tempProduct);
     //console.log("type > ", types);
     res.render('editproduct', { tempProduct: tempProduct[0], types: types })
@@ -78,10 +78,13 @@ router.get('/create/edit/:id', function(req,res) {
 
 
 //Rota com PUT para edição do produto
-router.put("/create", function(req, res) {
-    res.send("PUT");
+router.put("/create/edit/", function(req, res) {
+    let editProduct = req.body;
+    productsModel.updatePutProduct(editProduct)
 
-    //Essa rota precisa ser implementada.
+    res.redirect("/products/create") 
+    
+   
     //Mas já esta declarada pois em breve será feita a conexão com o MYSQL
 });
 

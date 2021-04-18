@@ -57,9 +57,37 @@ function findProduct(productId) {
     return tempProducts;
 }
 
+
+    function updatePutProduct(editProduct) {
+        let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
+        tempProducts = JSON.parse(tempProducts);
+        
+        tempProducts.forEach(function(product, contador) {
+
+            if(product.id === editProduct.id) {
+                tempProducts[contador] = editProduct
+                
+            }
+        })
+        tempProducts = JSON.stringify(tempProducts, null, '\t');
+
+        fs.writeFileSync('./models/products.json', tempProducts);
+
+        return console.log("Item atualizado")
+    }
+
+    
+
+        
+    
+
+
+
 module.exports = {
    getProducts: getProducts,
    insertProduct: insertProduct,
    deleteProduct: deleteProduct,
    findProduct: findProduct,
+   updatePutProduct: updatePutProduct
+   
 };
