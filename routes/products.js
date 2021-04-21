@@ -1,12 +1,11 @@
 const express = require('express');
-const products = require('../models/products')
+const productsModel = require('../models/products')
 const multer = require('multer');
 const path = require('path');
 
 // Importação dos  Middleware
 const newProductMiddleware = require('../middlewares/newProduct');
 const newProductControllers = require('../controllers/newProductController');
-const { getProducts } = require('../models/products');
 
 const router = express.Router();
 
@@ -30,7 +29,7 @@ const upload = multer({ storage: storage })
 
 /* GET Listagem de Produto */
 router.get('/', function(req, res, next) {
-    res.render('products', { title: 'produtos', products: products.getProducts() });
+    res.render('products', { title: 'produtos', products: productsModel.getProducts() });
 });
 
 
@@ -50,39 +49,41 @@ router.post('/create',
 
 //*******Rota para deletar um produto
 
-//Inicialmente seria utilizada a rota /create/:id, mas devido ao Middleware de validação do formulário foi utilizada a /create/delete 
-/*
-router.get('/create/delete/:id', function (req, res) {
-    
-    console.log("aqui 1", req.params.id);
-    
-    //res.send("vendo o produto: ", req.params.id);
-})
-*/
-
 router.delete('/create/delete/', function(req, res) {
     let productId = req.body.id;
-    products.deleteProduct(productId);
+    productsModel.deleteProduct(productId);
     res.redirect("/products/create");
 });
 
 //Rota para editar um produto
-router.get('/create/edit/:id', function(req,res) {
+router.get('/create/edit/:id', function(req, res) {
     let types = newProductControllers.types;
     let productId = req.params.id
-    let tempProduct = products.findProduct(productId);
+    let tempProduct = productsModel.findProduct(productId);
     //console.log("temp product > ", tempProduct);
     //console.log("type > ", types);
+    console.log(tempProduct[0])
     res.render('editproduct', { tempProduct: tempProduct[0], types: types })
 });
 
 
 //Rota com PUT para edição do produto
-router.put("/create", function(req, res) {
-    res.send("PUT");
+router.put("/create/edit", upload.single("photo"), function(req, res) {
+    let editProduct = req.body;
+    let { file } = req;
 
-    //Essa rota precisa ser implementada.
-    //Mas já esta declarada pois em breve será feita a conexão com o MYSQL
+    editProduct.id = parseInt(editProduct.id);
+
+    if (file !== undefined) {
+        editProduct.photo = file.originalname;
+    } else {
+        editProduct.photo = 'sem-foto.jpg';
+    }
+
+    productsModel.updatePutProduct(editProduct);
+
+    res.redirect("/products/create")
+    
 });
 
 module.exports = router;
