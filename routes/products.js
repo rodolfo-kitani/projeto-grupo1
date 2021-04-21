@@ -48,15 +48,14 @@ router.post('/create',
 );
 
 //*******Rota para deletar um produto
-
-router.delete('/create/delete/', function(req, res) {
+router.delete('/create/delete/', newProductMiddleware.validateUser, function(req, res) {
     let productId = req.body.id;
     productsModel.deleteProduct(productId);
     res.redirect("/products/create");
 });
 
 //Rota para editar um produto
-router.get('/create/edit/:id', function(req, res) {
+router.get('/create/edit/:id', newProductMiddleware.validateUser, function(req, res) {
     let types = newProductControllers.types;
     let productId = req.params.id
     let tempProduct = productsModel.findProduct(productId);
@@ -68,22 +67,28 @@ router.get('/create/edit/:id', function(req, res) {
 
 
 //Rota com PUT para edição do produto
-router.put("/create/edit", upload.single("photo"), function(req, res) {
-    let editProduct = req.body;
-    let { file } = req;
+router.put("/create/edit", 
+    upload.single("photo"), 
+    newProductMiddleware.validateUser, 
+    function(req, res) {
+        let editProduct = req.body;
+        let { file } = req;
 
-    editProduct.id = parseInt(editProduct.id);
+        let productId = parseInt(editProduct.id);
+        editProduct.id = productId;
 
-    if (file !== undefined) {
-        editProduct.photo = file.originalname;
-    } else {
-        editProduct.photo = 'sem-foto.jpg';
-    }
-
-    productsModel.updatePutProduct(editProduct);
-
-    res.redirect("/products/create")
-    
+        if(!editProduct.photoUpdate) {
+            let oldProductData = productsModel.findProduct(productId)
+            console.log("produto veio", oldProductData)
+            editProduct.photo = oldProductData[0].photo;
+        } else if (file !== undefined) {
+            editProduct.photo = file.originalname;
+        } else {
+            editProduct.photo = 'sem-foto.jpg';
+        }
+        console.log('oi2')
+        productsModel.updatePutProduct(editProduct);
+        res.redirect("/products/create")
 });
 
 module.exports = router;

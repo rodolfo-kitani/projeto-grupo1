@@ -45,7 +45,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="productName" class="">Nome do produto*</label>
-                        <input name="productName" id="productName" type="text" value="<%- tempProduct.productName %>" class="form-control" readonly required>
+                        <input name="productName" id="productName" type="text" value="<%- tempProduct.productName %>" class="form-control" required>
                     </div>
                     <div>
                         <label for="price" class="">Preço*</label>
@@ -67,12 +67,16 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="photoUpdate">Atualizar foto? </label>
+                        <input type="checkbox" name="photoUpdate" id="photoUpdate" value="yes">
+                    </div>
+                    <div id="photo-upload-div" class="mb-3 ms-3 d-none">
                         <label for="photo">Foto do produto: </label>
                         <input type="file" class="btn" name="photo">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-warning">Cadastrar</button>
-                        <button type="reset" class="btn btn-warning">Resetar</button>
+                        <button type="reset" class="btn btn-light ms-1">Resetar</button>
                     </div>
                     <div class="mt-3">
                         <p>*Campo obrigatório</p>
@@ -81,6 +85,9 @@
             </div>
         </div>
     </main>
+    <script
+        src="/javascripts/editProduct.js">
+    </script>
 </body>
 
 </html>
