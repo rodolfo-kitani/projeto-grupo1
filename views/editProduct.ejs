@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -37,7 +37,6 @@
             <div class="item col-6 mt-4">
                 <h1>Cadastro de Produto</h1>
 
-
                 <h3>Formulário de cadastro</h3>
                 <form method="POST" action="/products/create/edit?_method=PUT" enctype="multipart/form-data">
                     <div class="mb-3">
@@ -58,7 +57,8 @@
                         </div>
                         <div class="">
                             <% types.forEach(function(type) {%>
-                                <input type="radio" name="type" id="<%= type.id %>" class="" value="<%= type.id %>" <% if( type.id ===  tempProduct.type ) { %>
+                                <input type="radio" name="type" id="<%= type.id %>" class="" value="<%= type.id %>"
+                                <% if( type.id ===  tempProduct.type ) { %>
                                 <%- "checked" %>
                                     <% } %>
                                         />

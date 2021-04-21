@@ -30,15 +30,15 @@
 	{
 		"id": 5,
 		"productName": "Celular Motorola 2",
-		"price": "1000",
+		"price": "650",
 		"type": "cellphone",
-		"photo": "moto-e5-4_reduzida.jpg"
+		"photo": "sem-foto.jpg"
 	},
 	{
 		"id": 6,
 		"productName": "Celular Motorola 3",
-		"price": "1234",
+		"price": "44",
 		"type": "cellphone",
-		"photo": "moto-e5-4_reduzida.jpg"
+		"photo": "sem-foto.jpg"
 	}
 ]

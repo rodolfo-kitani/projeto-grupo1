@@ -58,30 +58,19 @@ function findProduct(productId) {
 }
 
 
-    function updatePutProduct(editProduct) {
-        let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-        tempProducts = JSON.parse(tempProducts);
+function updatePutProduct(editProduct) {
+    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
+    tempProducts = JSON.parse(tempProducts);
+    tempProducts.forEach(function(product, contador) {
         
-        tempProducts.forEach(function(product, contador) {
+        if ( product.id === editProduct.id ) {
+            return tempProducts[contador] = editProduct;
+        } 
+    })
 
-            if(product.id === editProduct.id) {
-                tempProducts[contador] = editProduct
-                
-            }
-        })
-        tempProducts = JSON.stringify(tempProducts, null, '\t');
-
-        fs.writeFileSync('./models/products.json', tempProducts);
-
-        return console.log("Item atualizado")
-    }
-
-    
-
-        
-    
-
-
+    tempProducts = JSON.stringify(tempProducts, null, '\t');
+    fs.writeFileSync('./models/products.json', tempProducts);
+}
 
 module.exports = {
    getProducts: getProducts,
@@ -89,5 +78,4 @@ module.exports = {
    deleteProduct: deleteProduct,
    findProduct: findProduct,
    updatePutProduct: updatePutProduct
-   
 };
