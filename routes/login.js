@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     let { email, password } = req.body
-    let user = model.authenticator(email, password)
+    let user = model.getUsers();
     if (user === undefined) {
         res.redirect('/login');
         return;

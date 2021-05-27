@@ -1,5 +1,6 @@
-/* Enquanto não instalamos o banco de dados
-os dados dos usuários ficarão registrados aqui */
+const Sequelize = require('sequelize');
+const config = require('../config/database')
+const db = new Sequelize(config);
 
 const users = [
     {
@@ -12,6 +13,12 @@ const users = [
     }
 ]
 
+async function getUsers() {
+    const result = await db.query('select * from user;', {
+        type: Sequelize.QueryTypes.SELECT
+    });
+}
+
 const loginModel = {
     authenticator: authenticator = function(email, password) {
         const user = users.find (function(user) {
@@ -23,4 +30,6 @@ const loginModel = {
     }
 }
 
-module.exports = loginModel;
+module.exports = {
+    getUsers: getUsers,
+};
