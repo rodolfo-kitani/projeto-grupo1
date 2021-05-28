@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const config = require('../config/database')
 const db = new Sequelize(config);
 
-const users = [
+const usersMockup = [
     {
         email: 'teste@teste.com',
         password: '1234'
@@ -13,23 +13,22 @@ const users = [
     }
 ]
 
-async function getUsers() {
-    const result = await db.query('select * from user;', {
+async function login(email, password) {
+    const user = await db.query('SELECT * FROM user WHERE email = :email', {
+        replacements: { email: email},
         type: Sequelize.QueryTypes.SELECT
     });
-}
+    
+    if(!user[0]) {
+        return false;
+    };
+    if(user[0].userPassword !== password) {
+        return false;
+    };
 
-const loginModel = {
-    authenticator: authenticator = function(email, password) {
-        const user = users.find (function(user) {
-            return user.email === email && user.password === password;
-        })
-
-        return user;
-
-    }
+    return user[0];
 }
 
 module.exports = {
-    getUsers: getUsers,
+    login: login,
 };
