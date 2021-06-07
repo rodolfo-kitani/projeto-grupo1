@@ -30,14 +30,6 @@ app.use(
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(
-    session({
-        secret: 'myApp-digitalhouse', // Trocar para uma UUID depois,
-        resave: true, // Opção que diz para o servidor, que a sessão deve ser renovada a cada acesso;       
-        saveUninitialized: true, // Força uma sessão que não está inicializada para que seja salva na store;
-    })
-)
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

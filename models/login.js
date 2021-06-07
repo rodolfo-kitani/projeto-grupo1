@@ -1,7 +1,8 @@
-/* Enquanto não instalamos o banco de dados
-os dados dos usuários ficarão registrados aqui */
+const Sequelize = require('sequelize');
+const config = require('../config/database')
+const db = new Sequelize(config);
 
-const users = [
+const usersMockup = [
     {
         email: 'teste@teste.com',
         password: '1234'
@@ -12,15 +13,22 @@ const users = [
     }
 ]
 
-const loginModel = {
-    authenticator: authenticator = function(email, password) {
-        const user = users.find (function(user) {
-            return user.email === email && user.password === password;
-        })
+async function login(email, password) {
+    const user = await db.query('SELECT * FROM user WHERE email = :email', {
+        replacements: { email: email},
+        type: Sequelize.QueryTypes.SELECT
+    });
+    
+    if(!user[0]) {
+        return false;
+    };
+    if(user[0].userPassword !== password) {
+        return false;
+    };
 
-        return user;
-
-    }
+    return user[0];
 }
 
-module.exports = loginModel;
+module.exports = {
+    login: login,
+};
