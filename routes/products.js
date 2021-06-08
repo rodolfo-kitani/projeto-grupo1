@@ -49,21 +49,19 @@ router.post('/create',
 );
 
 //*******Rota para deletar um produto
-router.delete('/create/delete/', newProductMiddleware.validateUser, function(req, res) {
+router.delete('/create/delete/', newProductMiddleware.validateUser, async function(req, res) {
     let productId = req.body.id;
     productsModel.deleteProduct(productId);
     res.redirect("/products/create");
 });
 
 //Rota para editar um produto
-router.get('/create/edit/:id', newProductMiddleware.validateUser, function(req, res) {
+router.get('/create/edit/:id', newProductMiddleware.validateUser, async function(req, res) {
     let types = newProductControllers.types;
     let productId = req.params.id
-    let tempProduct = productsModel.findProduct(productId);
-    //console.log("temp product > ", tempProduct);
-    //console.log("type > ", types);
-    console.log(tempProduct[0])
-    res.render('editproduct', { tempProduct: tempProduct[0], types: types })
+    let tempProduct =  await productsModel.findProduct(productId);
+
+    res.render('editproduct', { tempProduct: tempProduct, types: types })
 });
 
 
@@ -71,7 +69,7 @@ router.get('/create/edit/:id', newProductMiddleware.validateUser, function(req, 
 router.put("/create/edit", 
     upload.single("photo"), 
     newProductMiddleware.validateUser, 
-    function(req, res) {
+   async function(req, res) {
         let editProduct = req.body;
         let { file } = req;
 
@@ -79,16 +77,17 @@ router.put("/create/edit",
         editProduct.id = productId;
 
         if(!editProduct.photoUpdate) {
-            let oldProductData = productsModel.findProduct(productId)
-            console.log("produto veio", oldProductData)
-            editProduct.photo = oldProductData[0].photo;
+            let oldProductData = await productsModel.findProduct(productId)
+            
+            editProduct.photo = oldProductData.photo;
+
         } else if (file !== undefined) {
             editProduct.photo = file.originalname;
         } else {
             editProduct.photo = 'sem-foto.jpg';
         }
-        console.log('oi2')
-        productsModel.updatePutProduct(editProduct);
+        
+        await productsModel.updatePutProduct(editProduct);
         res.redirect("/products/create")
 });
 

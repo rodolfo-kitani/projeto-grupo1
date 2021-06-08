@@ -20,74 +20,58 @@ async function getProducts() {
 
 
 async function insertProduct(product) {
-    console.log(product)
-    await db.query("INSERT INTO product (name, type, price, photo) VALUES (:name, :type, :price, :photo)", {
+    await db.query("INSERT INTO product(name, type, price, photo) VALUES (:name, :type, :price, :photo)",{
         replacements: { 
             name: product.productName,
             type: product.type,
             price: product.price,
             photo: product.photo
+        }
+   
+})
+
+}
+
+async function deleteProduct(productId) {
+    
+    db.query("DELETE FROM product WHERE id = :id",
+    {
+    replacements: {
+            id: productId
+        }
+    });
+}
+
+
+async function findProduct(productId) {
+    
+    let tempProducts = await db.query('SELECT * FROM product WHERE id = :id', {
+
+        replacements: { 
+          id: productId
         },
 
-        type: Sequelize.QueryTypes.INSERT
+        type: Sequelize.QueryTypes.SELECT
+    });
+
+    return tempProducts[0];
+    }
+    
+async function updatePutProduct(editProduct) {
+    console.log(editProduct)
+    await db.query(
+       "UPDATE product SET name = :name, price = :price, type = :type, photo = :photo WHERE id = :id", {
+
    
-}
+        replacements: {
+            id: editProduct.id,
+            name: editProduct.productName, 
+            price: editProduct.price,
+            type: editProduct.type,
+            photo: editProduct.photo
+        }
+   });
 
-)}
-
-function deleteProduct(productId) {
-    
-    //Abre o arquivo JSON com os produtos cadastrados
-    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-
-    //Transforma o arquivo JSON em um array com objetos em JS
-    tempProducts = JSON.parse(tempProducts);
-
-    //Faz um filtro utilizando o productId que foi enviado como parametro da função
-    //E seleciona todos os produtos menos o com id informado
-    tempProducts = tempProducts.filter(function(product) {
-        return product.id !== parseInt(productId);
-        //salva o array filtrado na variavel tempProduct
-    })
-
-    //Transforma a string filtrada em arquivo JSON
-    tempProducts = JSON.stringify(tempProducts, null, '\t');
-
-    //Salva o array filtrado utilzando o módulo fs
-    fs.writeFileSync('./models/products.json', tempProducts);
-}
-
-function findProduct(productId) {
-    
-    //Abre o arquivo JSON com os produtos cadastrados
-    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-
-    //Transforma o arquivo JSON em um array com objetos em JS
-    tempProducts = JSON.parse(tempProducts);
-
-    //Faz um filtro utilizando o productId que foi enviado como parametro da função
-    //E seleciona APENAS o produto com id informado
-    tempProducts = tempProducts.filter(function(product) {
-        return product.id === parseInt(productId);
-        //salva o array filtrado na variavel tempProduct
-    })
-    
-    return tempProducts;
-}
-
-
-function updatePutProduct(editProduct) {
-    let tempProducts = fs.readFileSync('./models/products.json', { encoding: 'utf8', });
-    tempProducts = JSON.parse(tempProducts);
-    tempProducts.forEach(function(product, contador) {
-        
-        if ( product.id === editProduct.id ) {
-            return tempProducts[contador] = editProduct;
-        } 
-    })
-
-    tempProducts = JSON.stringify(tempProducts, null, '\t');
-    fs.writeFileSync('./models/products.json', tempProducts);
 }
 
 module.exports = {

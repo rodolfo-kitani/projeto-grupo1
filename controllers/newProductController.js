@@ -18,18 +18,18 @@ async function get(req, res, next) {
     res.render('newProduct', { title: 'Cadastrar Produto', types: types, products: await products.getProducts(), });
 }
 
-function post(req, res, next) {
+async function post(req, res, next) {
     let newProduct;
     let { productName, price, type } = req.body;
     let { file } = req;
-    let id = Math.random() * 1000;
-    id = Math.round(id);
+    //let id = Math.random() * 1000;
+    //id = Math.round(id);
     if (file !== undefined) {
-        newProduct = { id, productName, price, type, photo: file.originalname };
+        newProduct = { productName, price, type, photo: file.originalname };
     } else {
-        newProduct = { id, productName, price, type, photo: 'sem-foto.jpg' };
+        newProduct = { productName, price, type, photo: 'sem-foto.jpg' };
     }
-    products.insertProduct(newProduct);
+    await products.insertProduct(newProduct);
     res.redirect("/products/create");
 }
 
