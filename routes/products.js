@@ -28,8 +28,9 @@ const upload = multer({ storage: storage })
 // http://localhost:3000/products
 
 /* GET Listagem de Produto */
-router.get('/', function(req, res, next) {
-    res.render('products', { title: 'produtos', products: productsModel.getProducts() });
+router.get('/', async function(req, res, next) {
+    console.log(await productsModel.getProducts())
+    res.render('products', { title: 'produtos', products: await productsModel.getProducts() });
 });
 
 

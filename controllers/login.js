@@ -2,7 +2,7 @@ const loginModel = require('../models/login');
 
 async function login(req, res) {
     const { email, password } = req.body;
-    if(email.trim() || password.trim() === "") {
+    if(email.trim() === "") {
         return res.redirect('/login')
     }
     const user = await loginModel.login(email, password);
