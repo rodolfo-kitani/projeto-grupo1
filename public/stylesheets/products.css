@@ -47,4 +47,8 @@
     background-color: #F9E79F;
     padding-right: 20px;
     padding-left: 20px;
-    } 
+    }
+
+.product img{
+    max-width: 25%;
+}

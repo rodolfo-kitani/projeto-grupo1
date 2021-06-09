@@ -1,17 +1,87 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-br">
 <head>
-    <title>inicio</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
+    <title>Site de Vendas</title>
 </head>
 
 <body>
+    <!-- Header e Navbar -->
     <%- include('./partials/header') %>
+    
+    <!-- https://pixabay.com/images/search/online%20store/
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    https://br.freepik.com/
+
+    https://br.freepik.com/vetores-gratis/vista-traseira-do-homem-fazendo-a-pagina-de-destino-plana-de-decisao-de-negocios-personagem-de-desenho-animado-pensando-nas-opcoes-e-pontos-de-interrogacao-ao-seu-redor-conceito-de-estrategia-de-sucesso-e-busca-de-solucoes_14577034.htm#page=1&query=website&position=5
+
+\public\images\uploads
+    https://pixabay.com/pt/illustrations/visto-negócios-comprar-cartão-3082813/
+
+    https://pixabay.com/pt/illustrations/ecommerce-navegação-globo-comércio-3688436/ -->
+
+
+
+
+    <!-- Carrousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+         <img src="/images/computer1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+         <img src="/images/computer2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+         <img src="/images/computer3.jpg" class="d-block w-100" alt="...">
+        </div>
+        
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+
+    <!-- Promotion -->
+
+    <!-- Create your account -->
+
+    <!-- About -->
+    <h3>SOBRE</h3>
+    <div>
+        Projeto de um Marketplace especializado em locação de equipamentos de informática (Computadores, notebooks, celulares, entre outros).   
+        A inspiração principal é criar uma forma de democratizar o acesso à tecnologia para uma maior parcela da população.
+        Além disso, as pessoas com equipamentos parados podem criar formas novas de renda ao alugar seus antigos equipamentos,
+        o que incentiva o empreendedorismo e aumenta o ciclo de vida dos equipamentos e reduz o impacto ambiental ao utilizar melhor os recursos já criados.
+    </div>
+
+
+
+    <!-- Footer -->
+
+
+
+
+
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
-
 </html>
+

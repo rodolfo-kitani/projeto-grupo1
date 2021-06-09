@@ -58,7 +58,7 @@ async function findProduct(productId) {
     }
     
 async function updatePutProduct(editProduct) {
-    console.log(editProduct)
+    
     await db.query(
        "UPDATE product SET name = :name, price = :price, type = :type, photo = :photo WHERE id = :id", {
 

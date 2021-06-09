@@ -1,13 +1,12 @@
-<<<<<<< HEAD
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
-=======
+
  /* Inicio do Menu */ 
  
  .menu ul li a {
@@ -58,4 +57,7 @@ a {
   padding-right: 20px;
   padding-left: 20px;
   } 
->>>>>>> 7df804d (página de login)
+
+.carousel {
+  height: 40hv;
+}
