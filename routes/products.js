@@ -64,6 +64,14 @@ router.get('/create/edit/:id', newProductMiddleware.validateUser, async function
     res.render('editproduct', { tempProduct: tempProduct, types: types })
 });
 
+//Rota para mostrar os detalhes
+router.get('/details/:id', async function(req, res) {
+
+    let tempProduct =  await productsModel.findProduct(req.params.id);
+   
+    res.render('details', {tempProduct: tempProduct})
+})
+
 
 //Rota com PUT para edição do produto
 router.put("/create/edit", 

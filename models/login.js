@@ -14,7 +14,8 @@ async function getByEmail(email) {
 } 
 
 async function insertUser({nome, email, senha}) {
-  await db.query("INSERT INTO user (name, email, userPassword) VALUES(:name, :email, :userPassowrd)", {
+  console.log('senha model', senha);
+  await db.query("INSERT INTO user (name, email, userPassword) VALUES(:name, :email, :userPassword)", {
     replacements: {
         name: nome,
         email: email,

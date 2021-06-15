@@ -23,11 +23,11 @@
                         <p>
                             <%= item.name  %>
                         </p>
-                        <img <%="src=images/uploads/" + item.photo %> >
+                        <img src="images/uploads/<%= item.photo%>">
                         <p>
                             <%= item.price %>
                         </p>
-
+                        <a href="/products/details/<%= item.id%>" class="btn btn-warning ms-2 ">Detalhes</a>
                     </div>
                     <%}) %> 
 

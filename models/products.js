@@ -70,6 +70,9 @@ async function updatePutProduct(editProduct) {
             type: editProduct.type,
             photo: editProduct.photo
         }
+
+   
+        
    });
 
 }

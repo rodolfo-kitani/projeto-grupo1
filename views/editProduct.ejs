@@ -12,26 +12,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="the-container">
-            <a href="/" class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Fate_Zero_logo.png" height="100px" width="100px" alt="Logo Falso"></a>
-            <!--o logo em forma de imagem está dentro do link-->
-            <div class="the-menu">
-                <nav class="menu">
-                    <ul>
-                        <li><a href="/">Início</a></li>
-                        <li><a href="/about">Sobre</a></li>
-                        <li><a href="/products">Você está aqui</a>
-                            <ul>
-                                <li><a href="/products/create">Cadastrar novo produto</a></li>
-                                <li><a href="/login">Login In</a></li>
-                                <li><a href="/register">Criar conta</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-    </header>
+    
+    <%- include('./partials/header') %>
+
     <main class="register-container ">
         <div class="container">
             <div class="item col-6 mt-4">
