@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/product.css">
+    <link rel="stylesheet" href="/stylesheets/new-product.css">
     <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
     <title>Cadastrar Novo Produto</title>
 </head>
@@ -14,10 +14,9 @@
 <body>
     <header>
         <div class="the-container">
-            <a href="/" class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Fate_Zero_logo.png" height="100px" width="100px" alt="Logo Falso"></a>
-            <!--o logo em forma de imagem está dentro do link-->
-            <div class="the-menu">
-                <nav class="menu">
+            <div class="image"><a href="/"class="logo"><img src="../images/squar-removebg.png" width="200px" alt="SQUAR"></a></div> <!--o logo em forma de imagem está dentro do link-->
+            <div class="the-menu d-flex align-items-center">
+                <nav class="menu d-flex align-items-center">
                     <ul>
                         <li><a href="/">Início</a></li>
                         <li><a href="/about">Sobre</a></li>
@@ -80,7 +79,7 @@
                 </div>
 
                 <% products.forEach(function(item) {%>
-                    <div class="col-lg-4 item-product">
+                    <div class="col-9 col-sm-9 col-md-4 col-lg-3 item-product">
                         <p>
                             <%= item.name %>
                         </p>

@@ -52,12 +52,13 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: left;
+  align-items: center;
   /* align-items: left; */
   background-color: #F9E79F;
   padding-right: 20px;
   padding-left: 20px;
   } 
 
-.carousel {
-  height: 40hv;
+.carousel-inner {
+  height: 80vh;
 }

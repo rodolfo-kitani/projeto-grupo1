@@ -10,8 +10,6 @@ const db = new Sequelize(config);
 async function getProducts() {
     let file = await db.query('SELECT * FROM product', {
         type: Sequelize.QueryTypes.SELECT
-
-       
     });
     return file;
 }
@@ -27,13 +25,10 @@ async function insertProduct(product) {
             price: product.price,
             photo: product.photo
         }
-   
-})
-
+    })
 }
 
 async function deleteProduct(productId) {
-    
     db.query("DELETE FROM product WHERE id = :id",
     {
     replacements: {
@@ -44,25 +39,19 @@ async function deleteProduct(productId) {
 
 
 async function findProduct(productId) {
-    
     let tempProducts = await db.query('SELECT * FROM product WHERE id = :id', {
-
         replacements: { 
           id: productId
         },
 
         type: Sequelize.QueryTypes.SELECT
     });
-
     return tempProducts[0];
-    }
+}
     
 async function updatePutProduct(editProduct) {
-    
     await db.query(
        "UPDATE product SET name = :name, price = :price, type = :type, photo = :photo WHERE id = :id", {
-
-   
         replacements: {
             id: editProduct.id,
             name: editProduct.productName, 
@@ -70,11 +59,18 @@ async function updatePutProduct(editProduct) {
             type: editProduct.type,
             photo: editProduct.photo
         }
-
-   
-        
    });
+}
 
+async function searchProductForm(stringSearch) {
+    let response = await db.query(
+        "SELECT * FROM product WHERE name LIKE :search", {
+            type: Sequelize.QueryTypes.SELECT,
+            replacements: {
+                search: `%${stringSearch}%`
+            }
+        })
+        return response;
 }
 
 module.exports = {
@@ -82,5 +78,6 @@ module.exports = {
    insertProduct: insertProduct,
    deleteProduct: deleteProduct,
    findProduct: findProduct,
-   updatePutProduct: updatePutProduct
+   updatePutProduct: updatePutProduct,
+   searchProductForm: searchProductForm,
 };

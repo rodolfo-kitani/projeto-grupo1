@@ -1,44 +1,49 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <title>produtos</title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/products.css">
-    <!-- rel significa a relação. neste caso, importaremos um arquivo de estilo -->
+    <title>Produtos</title>
 </head>
-
 <body>
     <%- include('./partials/header') %>
-
+    <div class="container">
         <h1>Produtos</h1>
-        <div class="container">
-            <div class="container-product">
-                <div class="col-12 mt-4">
-                    <h3>Lista de Produtos</h3>
+        <div class="search-bar">
+        <form class="search-form" action="" method="post">
+            <input class="form-control" type="text" name="search">
+            <button class="btn btn-warning ms-2" type="submit">Buscar</button>
+        </form>
+        </div>
+        <div class="col-12 mt-4">
+            <h3>Lista de Produtos</h3>
+        </div>
+        <div class="container-product">
+
+
+            <% products.forEach(function(item) {%>
+                <div class="col-10 col-lg-3 col-md-6 col-sm-10 mt-4 product">
+                    <h6 class="text-wrap">
+                        <%= item.name  %>
+                    </h6>
+                    <img src="images/uploads/<%= item.photo%>">
+                    <h5>
+                        <%= item.price %>
+                    </h5>
+                    <a href="/products/details/<%= item.id%>" class="btn btn-warning ms-2 ">Detalhes</a>
                 </div>
-
-                <% products.forEach(function(item) {%>
-                    <div class="col-lg-4 item-product mt-4 product">
-                        <p>
-                            <%= item.name  %>
-                        </p>
-                        <img src="images/uploads/<%= item.photo%>">
-                        <p>
-                            <%= item.price %>
-                        </p>
-                        <a href="/products/details/<%= item.id%>" class="btn btn-warning ms-2 ">Detalhes</a>
-                    </div>
-                    <%}) %> 
-
-            </div>
-        </div>
+                <%}) %> 
 
         </div>
+    </div>
+
+    </div>
 
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
-
 </html>

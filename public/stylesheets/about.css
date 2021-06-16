@@ -43,6 +43,7 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
+    align-items: center;
     /* align-items: left; */
     background-color: #F9E79F;
     padding-right: 20px;

@@ -29,10 +29,16 @@ const upload = multer({ storage: storage })
 
 /* GET Listagem de Produto */
 router.get('/', async function(req, res, next) {
-    console.log(await productsModel.getProducts())
-    res.render('products', { title: 'produtos', products: await productsModel.getProducts() });
+    let productsList = await productsModel.getProducts();
+    res.render('products', { title: 'produtos', products: productsList });
 });
 
+
+router.post('/', async function(req, res) {
+    let search = req.body.search;
+    let productSearch = await productsModel.searchProductForm(search);
+    res.render('products', { title: 'Produtos', products: productSearch})
+})
 
 /* GET do Cadastro de Produto */
 router.get('/create',
