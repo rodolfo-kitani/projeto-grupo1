@@ -27,6 +27,7 @@ a {
   display: inline-block;
   text-align: center;
   line-height: 60px;
+  z-index: 100;
   /* position: porque o primeiro menu precisa ser 'relativo' em contexto do submenu | float: o texto está sendo forçado para a esquerda | display: para tirar as bolinahs que ficam automaticamente nas listas | width. height: são a largura e alyua do menu principal | text-align e line-height: são para cstumizar o menu de forma centralizada */ 
 }
 
@@ -61,4 +62,13 @@ a {
 
 .carousel-inner {
   height: 80vh;
+  z-index: -100
 }
+
+.carousel-inner p {
+  background-color: red;
+}
+
+/* #carouselExampleIndicators {
+  border-top: 25px solid transparent;
+} */
