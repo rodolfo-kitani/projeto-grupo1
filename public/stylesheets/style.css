@@ -61,12 +61,8 @@ a {
   } 
 
 .carousel-inner {
-  height: 80vh;
+  height: 90vh;
   z-index: -100
-}
-
-.carousel-inner p {
-  background-color: red;
 }
 
 /* #carouselExampleIndicators {
