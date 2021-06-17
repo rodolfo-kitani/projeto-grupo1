@@ -12,11 +12,9 @@ Além disso, as pessoas com equipamentos parados podem criar formas novas de ren
 
 ## Membros do projeto
 <ul>
-    <li>Ademir Gonçalves</li>
     <li>Ana Carneiro</li>
     <li>Moisés Souza</li>
     <li>Rodolfo Santana</li>
-    <li>Samuel Lin</li>
 </ul>
  
 ## Professores responsáveis
