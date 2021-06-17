@@ -62,3 +62,7 @@ a {
 .carousel-inner {
   height: 80vh;
 }
+
+#carouselExampleIndicators {
+  border-top: 25px solid transparent;
+}
