@@ -29,7 +29,7 @@ Além disso, as pessoas com equipamentos parados podem criar formas novas de ren
 git clone https://github.com/rdmoedas/projeto-grupo1.git
  
 2. Dentro da pasta do projeto, instalar as dependências com o comando:
-npm instal
+npm install
  
 3. Subir o servidor com o comando:
 npm run start
